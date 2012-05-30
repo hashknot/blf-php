@@ -1,0 +1,11 @@
+.myButton{width: 75px;border-radius: 5px;height: 40px;background:url(../images/button.png) no-repeat;}
+.wufoo{font-family:"Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;letter-spacing:.01em}
+.info div{font-size:95%;line-height:135%;color:#555} 
+form ul{margin:0;padding:0;list-style-type:none}
+form ul:after,form li:after,form li div:after{content:".";;height:0;clear:both;visibility:hidden}
+fieldset{;border:none;margin:0;padding:0}
+label.desc,legend.desc{font-size:95%;font-weight:bold;color:#222;line-height:150%;margin:0;padding:0 0 3px 0;border:none;white-space:normal;width:100%}
+label.choice{;cursor:pointer;font-size:100%;line-height:150%;margin:-17px -5px 0 10px;padding:0 0 5px 0;color:#222;width:88%}
+input.text,select.select{font-family:"Lucida Grande", Tahoma, Arial, sans-serif;font-size:100%;color:#333;margin:0;padding:2px 0}
+input.text,{border-top:1px solid #7c7c7c;border-left:1px solid #c3c3c3;border-right:1px solid #c3c3c3;border-bottom:1px solid #ddd;background:#fff url(../images/fieldbg.gif) repeat-x top}
+input.medium,select.medium{width:70%}

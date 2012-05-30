@@ -1,0 +1,189 @@
+<html>
+<head>
+
+<title>Broken Link Finder</title>
+
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta name="authors" content="JAKWorks">
+<meta name="keywords" content="Broken Link Finder">
+
+<!-- CSS -->
+<link href="css/structure.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+
+<!-- JavaScript -->
+<script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+		function onload()
+		{
+			document.getElementById('1').value = "off";
+			document.getElementById('2').value = "off";
+			document.getElementById('3').value = "off";
+			document.getElementById('4').value = "on";
+			document.getElementById('5').value = "on";
+			document.getElementById('type').value = "1";
+		}
+		
+		function validateEmail(elementValue){  
+			var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+			return emailPattern.test(elementValue);  
+		} 
+		
+		function sendData()
+		{
+			var format = "";
+			if(document.getElementById('1').value == "on")
+				format+='1';
+			if(document.getElementById('2').value == "on")
+				format+='2';
+			if(document.getElementById('3').value == "on")
+				format+='3';
+			if(document.getElementById('4').value == "on")
+				format+='4';
+			if(document.getElementById('5').value == "on")
+				
+				format+='5';
+			var error = false;
+			
+			if(!validateEmail($('#email').val()))
+			{
+				document.getElementById('email').value = 'Enter a Valid Email';
+				error=true;
+			}
+			if($('#url').val()=='URL' || $('#url').val()=='Enter a URL')
+			{
+				document.getElementById('url').value = 'Enter a URL';
+				error=true;
+			}
+			if(error)
+				return false;
+			document.getElementById('reply').innerHTML = '<div style="line-height:35px;width:inherit;text-align:center">Please Wait...</div>';
+			$('#reply').hide();
+			$('#reply').fadeIn();
+			$('#reply').fadeOut();
+			
+			$.post(
+			"crawler.php",
+			{
+				url:$('#url').val() , 
+				email:$('#email').val(),
+				forma:format,
+				depthlevel:$('#depthlevel').val(),
+				type:$('#type').val()
+			}, 
+			function(response)
+			{
+				setTimeout("finishAjax('reply', '"+escape(response)+"')", 400); 
+			}
+			); 
+		}
+		function finishAjax(id, response) { $('#'+id).html(unescape(response)); $('#flipToRecover').click();} 
+	</script>
+
+</head>
+
+<body id="public" onload="onload()">
+	<div id="container" class="ltr">
+		<form id="form70" name="form70" class="wufoo topLabel page"  enctype="multipart/form-data" action="asdf.php" >
+		
+			<header id="header" class="info">
+				<h2>Broken Links Finder</h2>
+				<div>Find out all the broken links on your site easily.</div>
+			</header>
+		
+			<ul>
+				<li id="foli0" class="notranslate      ">
+				<br/>
+					<label class="desc" id="title0" for="Field0">
+						URL
+					</label>
+					<div>
+						<input id="url" name="url" type="text" class="field text medium"  maxlength="255" onfocus="if(this.value=='URL' || this.value=='Enter a URL') this.value=''" onblur="if(this.value=='') this.value='URL'" value="URL"/>
+					</div>
+				</li>
+					<li id="foli3" class="notranslate      ">
+					<label class="desc" id="title3" for="Field3">
+						Email
+					</label>
+					<div>
+						<input id="email" name="email" type="text" class="field text medium" maxlength="255" value="Email" onfocus="if(this.value=='Email' || this.value=='Enter a Valid Email') this.value=''" onblur="if(this.value=='') this.value='Email'" />
+					</div>
+				</li>
+				<li id="foli6" class="notranslate      ">
+					<fieldset>
+						<legend id="title6" class="desc">
+							Consider these broken
+						</legend>
+						<div>
+							<span>
+								<label class="choice" >10x</label>
+								<input id="1" name="1" type="checkbox" class="field checkbox" onclick="if(this.value == 'off') this.value = 'on'; else if(this.value == 'on') this.value = 'off';"/>
+								
+								<label class="choice" >20x</label>
+								<input id="2" name="2" type="checkbox" class="field checkbox" onchange="if(this.value == 'off') this.value='on'; else if(this.value == 'on')   this.value = 'off';"/>
+								
+								<label class="choice" >30x</label>
+								<input id="3" name="3" type="checkbox" class="field checkbox" onclick="if(this.value == 'off') this.value = 'on';  else if(this.value == 'on') this.value = 'off';"/>
+								
+								<label class="choice" >40x</label>
+								<input id="4" name="4" type="checkbox" class="field checkbox" checked="checked" onclick="if(this.value == 'off') this.value = 'on';  else if(this.value = 'on') this.value == 'off';"/>
+								
+								<label class="choice" >50x</label>
+								<input id="5" name="5" type="checkbox" class="field checkbox" checked="checked" onclick="if(this.value == 'off') this.value = 'on';  else if(this.value = 'on') this.value == 'off';"/>
+						</div>
+					</fieldset>
+				</li>
+				<li id="foli6" class="notranslate      ">
+					<label class="desc">
+						Max Depth
+					</label>
+					<div>
+						<select id="depthlevel" name="depthlevel" type="text" class="field text medium">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5" selected="selected">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+				</li>
+				<li id="foli6" class="notranslate      ">
+					<fieldset>
+						<legend id="title6" class="desc">
+							Report Format
+						</legend>
+						<div>
+							<span>
+
+								<label class="choice" for="Field6">PDF</label>
+								<input id="type" name="type" type="radio" class="field checkbox" value="1" checked="checked" onclick="document.getElementById('type').value = '1'"/>
+
+								<label class="choice" for="Field10">HTML</label>
+								<input id="type" name="type" type="radio" class="field checkbox" value="2"  onclick="document.getElementById('type').value = '2'"/>
+
+								<label class="choice" for="Field6">CSV</label>
+								<input id="type" name="type" type="radio" class="field checkbox" value="3"  onclick="document.getElementById('type').value = '3'"/>
+								
+							</span>
+						</div>
+					</fieldset>
+				</li>
+				<li>
+					<span id="reply">
+					</span>
+				</li>
+				<div >
+					<input id="submit" name="submit" class="myButton" type="button" onclick="sendData()" value="Submit"/>
+				</div>
+			</ul>
+		</form> 
+
+	</div><!--container-->
+</body>
+</html>
