@@ -2,7 +2,6 @@
 ===
 
 ## Description:
-
 A web application(tool) that allows web developers to generate a report consisting of all the broken links in their website. It helps in knowing which links are valid and which links are dead.
 
 ##Requirements:
@@ -21,6 +20,7 @@ Run the crawler.php file with the following GET parameters.
 	depthlevel = <depthlevel of crawling>;
 	type = <1 - PDF, 2 - HTML, 3 - CSV>;
 	forma = <Just put the initials of each Status COde you want to be considered broken i.e 3 for 30X, '45' for 40X,50X and so on>;
+
 Example 
 	/crawler.php?url=codebreaker.co.in&email=msg.jitesh@gmail.com&forma=45&depthlevel=5&type=1
 
