@@ -11,7 +11,7 @@ A web application(tool) that allows web developers to generate a report consisti
 ##Installation:
 Clone the Repository to your PHP htdocs/www folder.
 
-	`$ git clone https://github.com/crusador/Broken-Links-Finder-PHP.git`
+	$ git clone https://github.com/crusador/Broken-Links-Finder-PHP.git
 
 
 ##Running:
