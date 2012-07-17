@@ -24,7 +24,6 @@ Example
      /crawler.php?url=codebreaker.co.in&email=msg.jitesh@gmail.com&forma=45&depthlevel=5&type=1
 
 ##Copyright and Licence
-
 2012 [JAKWorks] (http://www.facebook.com/JAKWorks)
 
 Broken Links Finder by JAKWorks is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/)
